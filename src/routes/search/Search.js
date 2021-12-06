@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import './search.scss';
 
 let debounceTimeout;
 
 export default function Search() {
+  const searchInput = useRef(null);
   const [searchResults, setSearchResults] = useState([]);
+
+  searchInput.current?.focus();
 
   async function searchMovies(searchQuery) {
     const resp = await fetch(
@@ -22,6 +25,8 @@ export default function Search() {
       <h2 className="route-Search__page-title">Search for Movie by Title</h2>
 
       <input
+        ref={searchInput}
+        placeholder="Movie title"
         onInput={(ev) => {
           clearTimeout(debounceTimeout);
 
@@ -39,7 +44,7 @@ export default function Search() {
             </h4>
             <img
               src={`https://image.tmdb.org/t/p/original${searchResult.poster_path}`}
-              alt="Movie image"
+              alt="Movie poster"
             />
           </div>
         ))}
