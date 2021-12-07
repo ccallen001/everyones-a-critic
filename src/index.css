@@ -22,3 +22,7 @@ button {
   padding: 0.25rem 0.5rem;
   font-weight: bold;
 }
+
+li {
+  list-style-type: none;
+}

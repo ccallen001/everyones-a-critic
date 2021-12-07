@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
 
+import SearchResult from '../../components/search-result/SearchResult';
+
 import './search.scss';
 
 let debounceTimeout;
@@ -38,15 +40,7 @@ export default function Search() {
 
       {!!searchResults.length &&
         searchResults.map((searchResult, i) => (
-          <div className="route-Search__search-result" key={i}>
-            <h4 className="route-Search__search-result--title">
-              {searchResult.title}
-            </h4>
-            <img
-              src={`https://image.tmdb.org/t/p/original${searchResult.poster_path}`}
-              alt="Movie poster"
-            />
-          </div>
+          <SearchResult searchResult={searchResult} key={i} />
         ))}
     </div>
   );

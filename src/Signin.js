@@ -45,7 +45,7 @@ export default function Signin() {
   }
 
   return (
-    <div className="Signin">
+    <form className="Signin">
       <header>
         <h1>Everyone's a Critic</h1>
         <h3>Sign In or Sign Up</h3>
@@ -54,20 +54,29 @@ export default function Signin() {
       <div>
         <label>
           <span>Email</span>
-          <input type="email" onInput={(ev) => setEmail(ev.target.value)} />
+          <input
+            type="email"
+            autoComplete="username"
+            onInput={(ev) => setEmail(ev.target.value)}
+          />
         </label>
       </div>
 
       <div>
         <label>
           <span>Password</span>
-          <input type="password" onInput={(ev) => setPw(ev.target.value)} />
+          <input
+            type="password"
+            autoComplete="current-password"
+            onInput={(ev) => setPw(ev.target.value)}
+          />
         </label>
       </div>
 
       <div>
         <button
           className="Signin__sign-up-in-btn"
+          type="button"
           onClick={isSignup ? createUser : signIn}
         >
           {isSignup ? 'Sign Up' : 'Sign In'}
@@ -76,9 +85,11 @@ export default function Signin() {
 
       <p className="Signin__instruction">
         {!isSignup ? `Don't` : 'Already'} have an account? Click{' '}
-        <button onClick={() => setIsSignup(!isSignup)}>here</button> to sign{' '}
-        {!isSignup ? 'up' : 'in'}.
+        <button type="button" onClick={() => setIsSignup(!isSignup)}>
+          here
+        </button>{' '}
+        to sign {!isSignup ? 'up' : 'in'}.
       </p>
-    </div>
+    </form>
   );
 }

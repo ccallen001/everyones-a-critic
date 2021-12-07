@@ -10,16 +10,25 @@ import Signin from './Signin';
 import './App.css';
 
 const instructions = (
-  <p>Navigate to the Search page to search for movie by title.</p>
+  <span>Navigate to the Search page to search for movie by title.</span>
 );
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    getAuth().onAuthStateChanged((currentUser) => setCurrentUser(currentUser));
-    console.log(currentUser);
+    getAuth().onAuthStateChanged((currentUser) => {
+      setCurrentUser(currentUser);
+      setLoading(false);
+    });
   });
+
+  if (loading) {
+    return (
+      <h1 style={{ marginTop: '8rem', textAlign: 'center' }}>Loading...</h1>
+    );
+  }
 
   return currentUser ? (
     <div className="App">
@@ -30,17 +39,6 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="*" element={<h1>Route not found!</h1>} />
       </Routes>
-
-      <footer
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          width: '100%',
-          padding: '0.5rem'
-        }}
-      >
-        Current user is: {currentUser?.email}
-      </footer>
     </div>
   ) : (
     <Signin />

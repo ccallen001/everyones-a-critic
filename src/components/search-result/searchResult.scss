@@ -1,0 +1,33 @@
+.component-SearchResult {
+  margin: 1rem auto;
+  padding: 0.5rem 0 0.75rem;
+  width: 20rem;
+  background: linear-gradient(cornsilk, whitesmoke);
+  border: 0.25rem solid rgba(0, 0, 0, 0.75);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.25);
+
+  &__title {
+    margin-bottom: 0.5rem;
+  }
+
+  img {
+    display: block;
+    margin: auto;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+    width: 8rem;
+    background-color: whitesmoke;
+    border: 1px solid;
+  }
+
+  &__comments {
+    ul {
+      margin: 0.5rem;
+      padding: 0.5rem 0.5rem 0.66rem;
+      max-height: 5rem;
+      background-color: white;
+      overflow: auto;
+    }
+  }
+}
